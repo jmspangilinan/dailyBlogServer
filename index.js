@@ -1,6 +1,7 @@
 // [SECTION] Express.js server
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 // [SECTION] Server setup
 const app = express();
@@ -16,6 +17,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // [SECTION] Linking
+
+const corsOptions = require('cors');
+app.use(cors({
+    origin: 'http://localhost:4000',  // replace with your frontend URL
+    credentials: true
+}));
+
+app.use(cors(corsOptions));
 
 //Routes Middleware
 const blogRoutes = require("./routes/blog");
